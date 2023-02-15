@@ -1,86 +1,137 @@
 import { LitElement, html, css } from 'lit';
 
-const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
+const user = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 
-class MiniResume extends LitElement {
-  static properties = {
-    header: { type: String },
+export class MiniResume extends LitElement {
+ 
+  static get properties() 
+  {
+    return {
+      name: {
+        type: String,
+      },
+      major: {
+        type: String,
+      },
+      education: {
+        type: String,
+      },
+      skills: {
+        type: String,
+      },
+      workexp: {
+        type: String,
+      },
+      rlvntcourses: {
+        type: String,
+      }
+    }
   }
 
-  static styles = css`
-    :host {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
-      color: #1a2b42;
-      max-width: 960px;
-      margin: 0 auto;
+
+    
+  static get styles(){
+    return css`
+    
+    .overallcard{
+      width: 600px;
+      border: 2px solid black;
+      display: inline-flex;
+      background-color: #b7e9e7;
+    }
+
+    .image{
+      width: 600px;
+    }
+    
+    .heading{
       text-align: center;
-      background-color: var(--mini-resume-background-color);
+      font-weight: bold;
+      font-size: 2rem;
     }
 
-    main {
-      flex-grow: 1;
+    .info{
+      margin: 24px;
+      padding: 12px;
+      font-weight: bold;
     }
 
-    .logo {
-      margin-top: 36px;
-      animation: app-logo-spin infinite 20s linear;
+    .info summary{
+      font-size: 20px;
     }
+    
 
-    @keyframes app-logo-spin {
-      from {
-        transform: rotate(0deg);
+    @media only screen and (max-width: 1200px){
+      .overallcard{
+        background-color: lightblue;
       }
-      to {
-        transform: rotate(360deg);
+    
+    }
+    @media only screen and (max-width: 600px){
+      .overallcard{
+        background-color: lightcoral;
       }
+    
     }
-
-    .app-footer {
-      font-size: calc(12px + 0.5vmin);
-      align-items: center;
+    @media only screen and (max-width: 425px){
+      .overallcard{
+        font-weight: normal;
+        font-size: 12px;
+      }
+      
+    
     }
-
-    .app-footer a {
-      margin-left: 5px;
-    }
-  `;
+    
+    
+    `;
+  }
 
   constructor() {
     super();
-    this.header = 'My app';
+    this.name = "Aaron Lobitana";
+    this.major = "B.S. Cybersecurity";
+    this.education = "Pennsylvania State University";
+    this.skills = "Placeholder skills";
+    this.workexp = "Placeholder work experience";
+    this.rlvntcourses = "Placeholder relevant courses"; 
   }
 
   render() {
     return html`
-      <main>
-        <div class="logo"><img alt="open-wc logo" src=${logo} /></div>
-        <h1>${this.header}</h1>
+      
+      <div class="overallcard">
+        <div class="box">
+          <img class="image" src="${user}" alt="User image"/>
+            
+          <div class="heading">
+            <h3>${this.name}</h3>
+            <h4>${this.education}</h4>
+            <h4>${this.major}</h4>
+          </div>
 
-        <p>Edit <code>src/MiniResume.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
-      </main>
+          <details class="info">
+            <summary>Extra Information</summary>
 
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
+            <div>
+              <ul>
+                <li>${this.skills}</li>
+                <li>${this.workexp}</li>
+                <li>${this.rlvntcourses}</li>
+              </ul>
+            </div>
+
+          </details>
+                
+
+            
+          
+
+        </div>
+
+      </div>
+      
+
+      
     `;
   }
 }

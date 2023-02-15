@@ -20,9 +20,68 @@
 </head>
 
 <body>
-  <mini-resume></mini-resume>
+  <div class="buttons">
+    <button class="dupe">Duplicate</button>
+    <button class="changebg">Change Background</button>
+    <button class="changehg">Change Heading</button>
+    <button id="del">Delete</button>
+  </div>
+  <div id="app">
+    <mini-resume></mini-resume>
+  </div>
+
+  
 
   <script type="module" src="./src/mini-resume.js"></script>
+
+  <script>
+
+  document.querySelector('.dupe').addEventListener('click', function(e) {
+  const itemToClone = document.querySelector('mini-resume').cloneNode();
+  document.querySelector('#app').appendChild(itemToClone);
+  });
+
+  document.querySelector('#del').addEventListener('click', function(e) {
+  if (document.querySelector('#app :last-child') !== document.querySelector('mini-resume')) {
+    document.querySelector('#app :last-child').remove();      
+  }
+  });
+
+  document.querySelector('.changehg').addEventListener('click', function(e) {
+
+    const myheading = document.querySelectorAll('mini-resume');
+
+    for (let i = 0; i < myheading.length; i++){
+      if (myheading[i].name === "something else"){
+        myheading[i].name = "Aaron Lobitana";
+      }else{
+        myheading[i].name = "something else";
+      }
+      
+    }
+
+  });
+  
+  document.querySelector('.changebg').addEventListener('click', function(e) 
+  {
+    
+    var hexnums = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += hexnums[Math.floor(Math.random() * 16)];
+    }
+    
+    document.querySelector('mini-resume').shadowRoot.querySelector('.overallcard').style.backgroundColor = color;
+  
+  });
+
+  
+
+
+
+    
+    
+  </script>
 </body>
 
 </html>
