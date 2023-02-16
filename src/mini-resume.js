@@ -36,13 +36,18 @@ export class MiniResume extends LitElement {
     .overallcard{
       width: 600px;
       border: 2px solid black;
-      display: inline-flex;
-      background-color: #002e62;
-      margin: 20px;
+      display: inline-block;
+      background-color: black;
     }
 
+    
+
     .image{
-      width: 600px;
+      margin-left: 40px;
+      width: 200px;
+      float: left;
+      border-radius: 50%;
+      border: 4px solid white;
     }
     
     .heading{
@@ -50,6 +55,7 @@ export class MiniResume extends LitElement {
       font-weight: bold;
       font-size: 2rem;
       color: white;
+      margin-bottom: 80px;
     }
 
     .heading h3:hover{
@@ -132,43 +138,43 @@ export class MiniResume extends LitElement {
           <div class="pic">
             <img class="image" src="${user}" alt="User image"/>
           </div>
-          
-            
-          <div class="heading">
-            <h3>${this.name}</h3>
-            <h4>${this.education}</h4>
-            <h4>${this.major}</h4>
-          </div>
 
-          <details class="info">
-            <summary>Extra Information</summary>
-
-            <div>
-              <ul>
-                <details class="skills">
-                  <summary>Skills</summary>
-                  <li>${this.skills}</li>
-                </details>
-
-                <details class="exp">
-                  <summary>Work Experience</summary>
-                  <li>${this.workexp}</li>
-                </details>
-
-                <details class="course">
-                  <summary>Relevant Course Work</summary>
-                  <li>${this.rlvntcourses}</li>
-                </details>
-
-              </ul>
+          <div class="text">
+            <div class="heading">
+              <h3>${this.name}</h3>
+              <h4>${this.education}</h4>
+              <h4>${this.major}</h4>
             </div>
 
-          </details>
-                
+            <details class="info">
+              <summary>Extra Information</summary>
 
-            
+              <div>
+                <ul>
+                  <details class="skills">
+                    <summary>Skills</summary>
+                    <li>${this.skills}</li>
+                  </details>
+
+                  <details class="exp">
+                    <summary>Work Experience</summary>
+                    <li>${this.workexp}</li>
+                  </details>
+
+                  <details class="course">
+                    <summary>Relevant Course Work</summary>
+                    <li>${this.rlvntcourses}</li>
+                  </details>
+
+                </ul>
+              </div>
+
+            </details>
+
+          </div>
           
-
+            
+        
         </div>
 
       </div>
