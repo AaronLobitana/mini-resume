@@ -15,8 +15,25 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
+
+    .skills{
+      margin-bottom: 20px;
+    }
+    
+    .exp{
+      margin-bottom: 20px;
+    }
+
+    .course{
+      margin-bottom: 20px;
+    }
+
   </style>
+
+
   <title>mini-resume</title>
+
+
 </head>
 
 <body>
@@ -27,7 +44,40 @@
     <button id="del">Delete</button>
   </div>
   <div id="app">
-    <mini-resume></mini-resume>
+    <mini-resume>
+        <div slot="infoslot">
+          <ul>
+            <details class="skills">
+              <summary>Skills</summary>
+              <li>Placeholder skills</li>
+            </details>
+
+            <details class="exp">
+              <summary>Work Experience</summary>
+              <li>Placeholder work experince</li>
+            </details>
+
+            <details class="course">
+              <summary>Relevant Course Work</summary>
+              <li>Placeholder relevant coursework</li>
+            </details>
+          </ul>
+        </div>
+
+        <div slot="username">
+          <h3>Aaron Lobitana</h3>
+        </div>
+
+        <div slot="college">
+          <h4>Pennsylvania State University</h4>
+        </div>
+
+        <div slot="major">
+          <h4>B.S. Cybersecurity</h4>
+        </div>
+
+
+    </mini-resume>
   </div>
 
   

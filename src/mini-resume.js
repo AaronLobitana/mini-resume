@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import "@lrnwebcomponents/meme-maker/meme-maker.js";
 
 const user = new URL('../assets/placeholderimg.jpg', import.meta.url).href;
 
@@ -23,6 +24,9 @@ export class MiniResume extends LitElement {
         type: String,
       },
       rlvntcourses: {
+        type: String,
+      },
+      extrainfolabel: {
         type: String,
       }
     }
@@ -56,17 +60,18 @@ export class MiniResume extends LitElement {
       font-size: 2rem;
       color: white;
       margin-bottom: 80px;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
     }
 
     .heading h3:hover{
-      font-stretch: condensed;
       color: #ffb7c5;
+      font-style: italic;
       
     }
 
     .heading h4:hover{
       color: #ffb7c5;
-      font-stretch: semi-condensed;
+      font-style: italic;
     }
 
     .info{
@@ -76,6 +81,7 @@ export class MiniResume extends LitElement {
       color: white;
       border: 2px solid white;
       border-radius: 12px;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
     }
 
     .info summary{
@@ -92,6 +98,12 @@ export class MiniResume extends LitElement {
     @media only screen and (max-width: 600px){
       .overallcard{
         background-color: lightcoral;
+        width: 500px;
+        
+      }
+      .heading h4{
+        font-weight: normal;
+        font-size: 24px;
       }
     
     }
@@ -99,22 +111,13 @@ export class MiniResume extends LitElement {
       .overallcard{
         font-weight: normal;
         font-size: 12px;
+        background-color: powderblue;
       }
       
     
     }
 
-    .skills{
-      margin-bottom: 20px;
-    }
     
-    .exp{
-      margin-bottom: 20px;
-    }
-
-    .course{
-      margin-bottom: 20px;
-    }
     
     `;
   }
@@ -124,9 +127,10 @@ export class MiniResume extends LitElement {
     this.name = "Aaron Lobitana";
     this.major = "B.S. Cybersecurity";
     this.education = "Pennsylvania State University";
-    this.skills = "Placeholder skills";
-    this.workexp = "Placeholder work experience";
-    this.rlvntcourses = "Placeholder relevant courses"; 
+    this.skillslabel = "Skills";
+    this.workexplabel = "Work Experience";
+    this.rlvntcourseslabel = "Relevant Coursework"; 
+    this.extrainfolabel = "Extra Information";
   }
 
   render() {
@@ -136,38 +140,27 @@ export class MiniResume extends LitElement {
         <div class="box">
 
           <div class="pic">
-            <img class="image" src="${user}" alt="User image"/>
+
+            <meme-maker 
+              image-url=${user}
+              top-text="me: doesn't have a professional headshot" bottom-text="also me:">
+            </meme-maker>
+
+            
           </div>
 
           <div class="text">
             <div class="heading">
-              <h3>${this.name}</h3>
-              <h4>${this.education}</h4>
-              <h4>${this.major}</h4>
+              <slot name="username"></slot>
+              <slot name="college"></slot>
+              <slot name="major"></slot>
             </div>
 
             <details class="info">
-              <summary>Extra Information</summary>
+              <summary>${this.extrainfolabel}</summary>
 
-              <div>
-                <ul>
-                  <details class="skills">
-                    <summary>Skills</summary>
-                    <li>${this.skills}</li>
-                  </details>
 
-                  <details class="exp">
-                    <summary>Work Experience</summary>
-                    <li>${this.workexp}</li>
-                  </details>
-
-                  <details class="course">
-                    <summary>Relevant Course Work</summary>
-                    <li>${this.rlvntcourses}</li>
-                  </details>
-
-                </ul>
-              </div>
+              <slot name="infoslot"></slot>
 
             </details>
 
