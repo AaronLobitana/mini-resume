@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
-const user = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
+const user = new URL('../assets/placeholderimg.jpg', import.meta.url).href;
 
 export class MiniResume extends LitElement {
  
@@ -37,7 +37,8 @@ export class MiniResume extends LitElement {
       width: 600px;
       border: 2px solid black;
       display: inline-flex;
-      background-color: #b7e9e7;
+      background-color: #002e62;
+      margin: 20px;
     }
 
     .image{
@@ -48,18 +49,33 @@ export class MiniResume extends LitElement {
       text-align: center;
       font-weight: bold;
       font-size: 2rem;
+      color: white;
+    }
+
+    .heading h3:hover{
+      font-stretch: condensed;
+      color: #ffb7c5;
+      
+    }
+
+    .heading h4:hover{
+      color: #ffb7c5;
+      font-stretch: semi-condensed;
     }
 
     .info{
       margin: 24px;
       padding: 12px;
       font-weight: bold;
+      color: white;
+      border: 2px solid white;
+      border-radius: 12px;
     }
 
     .info summary{
       font-size: 20px;
+      
     }
-    
 
     @media only screen and (max-width: 1200px){
       .overallcard{
@@ -81,7 +97,18 @@ export class MiniResume extends LitElement {
       
     
     }
+
+    .skills{
+      margin-bottom: 20px;
+    }
     
+    .exp{
+      margin-bottom: 20px;
+    }
+
+    .course{
+      margin-bottom: 20px;
+    }
     
     `;
   }
@@ -101,7 +128,11 @@ export class MiniResume extends LitElement {
       
       <div class="overallcard">
         <div class="box">
-          <img class="image" src="${user}" alt="User image"/>
+
+          <div class="pic">
+            <img class="image" src="${user}" alt="User image"/>
+          </div>
+          
             
           <div class="heading">
             <h3>${this.name}</h3>
@@ -114,9 +145,21 @@ export class MiniResume extends LitElement {
 
             <div>
               <ul>
-                <li>${this.skills}</li>
-                <li>${this.workexp}</li>
-                <li>${this.rlvntcourses}</li>
+                <details class="skills">
+                  <summary>Skills</summary>
+                  <li>${this.skills}</li>
+                </details>
+
+                <details class="exp">
+                  <summary>Work Experience</summary>
+                  <li>${this.workexp}</li>
+                </details>
+
+                <details class="course">
+                  <summary>Relevant Course Work</summary>
+                  <li>${this.rlvntcourses}</li>
+                </details>
+
               </ul>
             </div>
 
