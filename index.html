@@ -42,40 +42,42 @@
     <button class="changebg">Change Background</button>
     <button class="changehg">Change Heading</button>
     <button id="del">Delete</button>
-    
+    <button data-toggle>Toggle Info</button>
+
   </div>
   <div id="app">
-    <mini-resume class="indexmain" id="joemama">
-        <div slot="infoslot">
-          <ul>
-            <details class="skills">
-              <summary>Skills</summary>
-              <li>Placeholder skills</li>
-            </details>
+    <mini-resume class="indexmain">
+      
+      <div slot="infoslot">
+        <ul>
+          <details class="skills">
+            <summary>Skills</summary>
+            <li>Placeholder skills</li>
+          </details>
 
-            <details class="exp">
-              <summary>Work Experience</summary>
-              <li>Placeholder work experince</li>
-            </details>
+          <details class="exp">
+            <summary>Work Experience</summary>
+            <li>Placeholder work experince</li>
+          </details>
 
-            <details class="course">
-              <summary>Relevant Course Work</summary>
-              <li>Placeholder relevant coursework</li>
-            </details>
-          </ul>
-        </div>
+          <details class="course">
+            <summary>Relevant Course Work</summary>
+            <li>Placeholder relevant coursework</li>
+          </details>
+        </ul>
+      </div>
 
-        <div slot="username">
-          <h3>Aaron Lobitana</h3>
-        </div>
+      <div slot="username">
+        <h3>Aaron Lobitana</h3>
+      </div>
 
-        <div slot="college">
-          <h4>Pennsylvania State University</h4>
-        </div>
+      <div slot="college">
+        <h4>Pennsylvania State University</h4>
+      </div>
 
-        <div slot="major">
-          <h4>B.S. Cybersecurity</h4>
-        </div>
+      <div slot="major">
+        <h4>B.S. Cybersecurity</h4>
+      </div>
 
 
     </mini-resume>
@@ -86,6 +88,17 @@
   <script type="module" src="./src/mini-resume.js"></script>
 
   <script>
+
+    document.querySelector('button[data-toggle]').addEventListener('click', (e) => {
+    const moreinfo = document.querySelector('mini-resume').shadowRoot.querySelector('details')
+    console.log(moreinfo);
+    if (moreinfo.getAttribute('open')) {
+      moreinfo.removeAttribute('open');
+    }
+    else {
+      moreinfo.setAttribute('open','open');    
+    }
+    });
 
     document.querySelector('.dupe').addEventListener('click', function(e) {
     const itemToClone = document.querySelector('.indexmain').cloneNode(true);
@@ -127,12 +140,6 @@
       document.querySelector('mini-resume').shadowRoot.querySelector('.overallcard').style.backgroundColor = color;
     
     });
-
-
-
-
-  
-
 
 
     
