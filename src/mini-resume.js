@@ -151,7 +151,7 @@ export class MiniResume extends LitElement {
 
           <div class="text">
             <div class="heading">
-              <slot name="username"></slot>
+              <h3>${this.name}</h3>
               <slot name="college"></slot>
               <slot name="major"></slot>
             </div>
