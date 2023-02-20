@@ -107,8 +107,8 @@
 
     
     document.querySelector('#del').addEventListener('click', function(e) {
-    if (document.querySelector('#app :last-child') !== document.querySelector('mini-resume')) {
-      document.querySelector('#app :last-child').remove();      
+    if (document.querySelector('#app mini-resume:last-child') !== document.querySelector('mini-resume')) {
+      document.querySelector('#app mini-resume:last-child').remove();      
     }
     });
     
