@@ -43,10 +43,12 @@
     <button class="changehg">Change Heading</button>
     <button id="del">Delete</button>
     <button data-toggle>Toggle Info</button>
+    <button class="shadowenable">Toggle Shadow</button>
 
   </div>
   <div id="app">
-    <mini-resume class="indexmain">
+    <mini-resume class="indexmain" shadow-enable>
+      
       
       <div slot="infoslot">
         <ul>
@@ -86,9 +88,16 @@
   
 
   <script type="module" src="./src/mini-resume.js"></script>
+  <script type="module">
+    import "@lrnwebcomponents/meme-maker/meme-maker.js";
+    const user = new URL('../assets/placeholderimg.jpg', import.meta.url).href;
+
+  </script>
 
   <script>
 
+
+    
     document.querySelector('button[data-toggle]').addEventListener('click', (e) => {
     const moreinfo = document.querySelector('mini-resume').shadowRoot.querySelector('details')
     console.log(moreinfo);

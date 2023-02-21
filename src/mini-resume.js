@@ -10,6 +10,7 @@ export class MiniResume extends LitElement {
     return {
       name: {
         type: String,
+        reflect: true,
       },
       major: {
         type: String,
@@ -28,7 +29,12 @@ export class MiniResume extends LitElement {
       },
       extrainfolabel: {
         type: String,
-      }
+      },
+      shadowEnable: {
+        Boolean: true,
+        reflect: true,
+        attribute: "shadow-enable",
+      },
     }
   }
 
@@ -36,6 +42,15 @@ export class MiniResume extends LitElement {
     
   static get styles(){
     return css`
+
+    
+    :host([shadow-enable]) .overallcard{
+      box-shadow: 2px 2px 15px blue;
+      margin: 12px;
+    }
+    
+    
+    
     
     .overallcard{
       width: 600px;
@@ -131,6 +146,7 @@ export class MiniResume extends LitElement {
     this.workexplabel = "Work Experience";
     this.rlvntcourseslabel = "Relevant Coursework"; 
     this.extrainfolabel = "Extra Information";
+    this.shadowEnable = false;
   }
 
   render() {
@@ -141,6 +157,7 @@ export class MiniResume extends LitElement {
 
           <div class="pic">
 
+            
             <meme-maker 
               image-url=${user}
               top-text="me: doesn't have a professional headshot" bottom-text="also me:">
