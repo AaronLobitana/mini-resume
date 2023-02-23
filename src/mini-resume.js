@@ -35,6 +35,24 @@ export class MiniResume extends LitElement {
         reflect: true,
         attribute: "shadow-enable",
       },
+      newColor: {
+        type: String,
+        reflect: true,
+        attribute: 'new-color'
+      },
+      meme: {
+        type: String,
+      },
+      memeTop: {
+        type: String,
+      },
+      memeBottom: {
+        type: String,
+      },
+      opened: {
+        type: Boolean,
+        reflect: true,
+      }
     }
   }
 
@@ -44,12 +62,26 @@ export class MiniResume extends LitElement {
     return css`
 
     
-    :host([shadow-enable]) .overallcard{
+    :host([shadow-enable=true]) .overallcard{
       box-shadow: 2px 2px 15px blue;
       margin: 12px;
     }
+
+
+    :host([new-color="green"]) .overallcard{
+      background-color: var(--mini-resume-new-color, lightseagreen);
+    }
+
+    :host([new-color="blue"]) .overallcard{
+      background-color: var(--mini-resume-new-color, lightskyblue);
+    }
     
-    
+    :host([new-color="pink"]) .overallcard{
+      background-color: var(--mini-resume-new-color, lightpink);
+    }
+    :host([new-color="black"]) .overallcard{
+      background-color: var(--mini-resume-new-color, black);
+    }
     
     
     .overallcard{
@@ -61,13 +93,7 @@ export class MiniResume extends LitElement {
 
     
 
-    .image{
-      margin-left: 40px;
-      width: 200px;
-      float: left;
-      border-radius: 50%;
-      border: 4px solid white;
-    }
+  
     
     .heading{
       text-align: center;
@@ -132,8 +158,7 @@ export class MiniResume extends LitElement {
     
     }
 
-    
-    
+
     `;
   }
 
@@ -147,6 +172,32 @@ export class MiniResume extends LitElement {
     this.rlvntcourseslabel = "Relevant Coursework"; 
     this.extrainfolabel = "Extra Information";
     this.shadowEnable = false;
+    this.newColor = null;
+    this.meme = null; // how do make this a property if my img is downloaded?
+    this.memeTop = "me: doesn't have a professional headshot";
+    this.memeBottom = "also me:"
+    this.opened = false;
+    
+  }
+
+  toggleEvent(){
+    const state = this.shadowRoot.querySelector('details').getAttribute('open') === '' ? true : false;
+    this.opened = state;
+  }
+
+  updated(changedProperties){
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === 'opened'){
+        this.dispatchEvent(new CustomEvent('opened-changed', 
+          { 
+            composed: true,
+            bubbles: true,
+            cancelable: false,
+            detail: { value: this[propName] } 
+          }));
+        console.log(`${propName} changed. oldValue: ${oldValue}`);
+      };
+    });
   }
 
   render() {
@@ -157,10 +208,11 @@ export class MiniResume extends LitElement {
 
           <div class="pic">
 
-            
+          
             <meme-maker 
-              image-url=${user}
-              top-text="me: doesn't have a professional headshot" bottom-text="also me:">
+              image-url=${user} 
+              top-text="${this.memeTop}" 
+              bottom-text="${this.memeBottom}">
             </meme-maker>
 
             
@@ -173,7 +225,7 @@ export class MiniResume extends LitElement {
               <slot name="major"></slot>
             </div>
 
-            <details class="info">
+            <details class="info" .open="${this.opened}" @toggle="${this.toggleEvent}">
               <summary>${this.extrainfolabel}</summary>
 
 

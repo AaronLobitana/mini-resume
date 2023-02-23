@@ -16,6 +16,19 @@
       background-color: #ededed;
     }
 
+    mini-resume[new-color="blue"]{
+      --mini-resume-new-color: lightskyblue;
+    }
+    mini-resume[new-color="green"]{
+      --mini-resume-new-color: lightseagreen;
+    }
+    mini-resume[new-color="pink"]{
+      --mini-resume-new-color: lightpink;
+    }
+    mini-resume[new-color="black"]{
+      --mini-resume-new-color: black;
+    }
+
     .skills{
       margin-bottom: 20px;
     }
@@ -96,17 +109,18 @@
 
   <script>
 
+    document.body.addEventListener('opened-changed', (e) => {
+      document.querySelector('button[data-toggle]').innerText = e.detail.value ? 'Hide Details' : 'Show Details';
+      console.log('opened-changed', e.detail, e.target);
+    })
 
+    document.querySelector('.shadowenable').addEventListener('click', (e) => {
+      document.querySelector('mini-resume').shadowEnable = true;
+    })
     
     document.querySelector('button[data-toggle]').addEventListener('click', (e) => {
-    const moreinfo = document.querySelector('mini-resume').shadowRoot.querySelector('details')
-    console.log(moreinfo);
-    if (moreinfo.getAttribute('open')) {
-      moreinfo.removeAttribute('open');
-    }
-    else {
-      moreinfo.setAttribute('open','open');    
-    }
+    const moreinfo = document.querySelector('mini-resume');
+    moreinfo.opened = !moreinfo.opened;
     });
 
     document.querySelector('.dupe').addEventListener('click', function(e) {
@@ -137,6 +151,8 @@
 
     });
     
+
+    /**
     document.querySelector('.changebg').addEventListener('click', function(e) 
     {
       
@@ -149,6 +165,14 @@
       document.querySelector('mini-resume').shadowRoot.querySelector('.overallcard').style.backgroundColor = color;
     
     });
+    */
+
+
+    document.querySelector('.changebg').addEventListener('click', (e) => {
+      const colors = ["blue", "green", "pink", "black"]
+      const randomColors = colors[Math.floor(Math.random() * colors.length)];
+      document.querySelector('mini-resume').newColor = randomColors;
+    })
 
 
     
