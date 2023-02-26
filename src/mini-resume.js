@@ -31,7 +31,7 @@ export class MiniResume extends LitElement {
         type: String,
       },
       shadowEnable: {
-        Boolean: true,
+        type: Boolean,
         reflect: true,
         attribute: "shadow-enable",
       },
@@ -52,6 +52,9 @@ export class MiniResume extends LitElement {
       opened: {
         type: Boolean,
         reflect: true,
+      },
+      imageURL: {
+        type: String,
       }
     }
   }
@@ -62,7 +65,7 @@ export class MiniResume extends LitElement {
     return css`
 
     
-    :host([shadow-enable=true]) .overallcard{
+    :host([shadow-enable]) .overallcard{
       box-shadow: 2px 2px 15px blue;
       margin: 12px;
     }
@@ -146,6 +149,9 @@ export class MiniResume extends LitElement {
         font-weight: normal;
         font-size: 24px;
       }
+      .info{
+        display: none;
+      }
     
     }
     @media only screen and (max-width: 425px){
@@ -165,11 +171,11 @@ export class MiniResume extends LitElement {
   constructor() {
     super();
     this.name = "Aaron Lobitana";
-    this.major = "B.S. Cybersecurity";
-    this.education = "Pennsylvania State University";
-    this.skillslabel = "Skills";
-    this.workexplabel = "Work Experience";
-    this.rlvntcourseslabel = "Relevant Coursework"; 
+    //this.major = "B.S. Cybersecurity"; do I need this for 
+    //this.education = "Pennsylvania State University";
+    //this.skillslabel = "Skills";
+    //this.workexplabel = "Work Experience";
+    //this.rlvntcourseslabel = "Relevant Coursework"; 
     this.extrainfolabel = "Extra Information";
     this.shadowEnable = false;
     this.newColor = null;
@@ -177,6 +183,7 @@ export class MiniResume extends LitElement {
     this.memeTop = "me: doesn't have a professional headshot";
     this.memeBottom = "also me:"
     this.opened = false;
+    this.imageURL = 'https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg';
     
   }
 
@@ -221,8 +228,8 @@ export class MiniResume extends LitElement {
           <div class="text">
             <div class="heading">
               <h3>${this.name}</h3>
-              <slot name="college"></slot>
-              <slot name="major"></slot>
+              <h3><slot name="college"></slot></h3>
+              <h3><slot name="major"></slot></h3>
             </div>
 
             <details class="info" .open="${this.opened}" @toggle="${this.toggleEvent}">

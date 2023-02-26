@@ -41,6 +41,55 @@
       margin-bottom: 20px;
     }
 
+    .dupe{
+      background-color:black;
+      color: white;
+      padding: 12px;
+      margin: 12px 12px 12px 12px;
+      box-shadow: 2px 2px 15px blue;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
+    }
+    .changebg{
+      background-color:black;
+      color: white;
+      padding: 12px;
+      margin: 12px 12px 12px 0px;
+      box-shadow: 2px 2px 15px blue;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
+    }
+    .changehg{
+      background-color:black;
+      color: white;
+      padding: 12px;
+      margin: 12px 12px 12px 0px;
+      box-shadow: 2px 2px 15px blue;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
+    }
+    .toggleinfo{
+      background-color:black;
+      color: white;
+      padding: 12px;
+      margin: 12px 12px 12px 0px;
+      box-shadow: 2px 2px 15px blue;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
+    }
+    #del{
+      background-color:black;
+      color: white;
+      padding: 12px;
+      margin: 12px 12px 12px 0px;
+      box-shadow: 2px 2px 15px blue;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
+    }
+    .shadowenable{
+      background-color:black;
+      color: white;
+      padding: 12px;
+      margin: 12px 12px 12px 0px;
+      box-shadow: 2px 2px 15px blue;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
+    }
+
   </style>
 
 
@@ -55,7 +104,7 @@
     <button class="changebg">Change Background</button>
     <button class="changehg">Change Heading</button>
     <button id="del">Delete</button>
-    <button data-toggle>Toggle Info</button>
+    <button data-toggle class="toggleinfo">Toggle Info</button>
     <button class="shadowenable">Toggle Shadow</button>
 
   </div>
@@ -115,8 +164,8 @@
     })
 
     document.querySelector('.shadowenable').addEventListener('click', (e) => {
-      document.querySelector('mini-resume').shadowEnable = true;
-    })
+      document.querySelector('mini-resume').shadowEnable = !document.querySelector('mini-resume').shadowEnable;
+    });
     
     document.querySelector('button[data-toggle]').addEventListener('click', (e) => {
     const moreinfo = document.querySelector('mini-resume');
@@ -152,27 +201,12 @@
     });
     
 
-    /**
-    document.querySelector('.changebg').addEventListener('click', function(e) 
-    {
-      
-      var hexnums = '0123456789ABCDEF';
-      var color = '#';
-      for (var i = 0; i < 6; i++) {
-        color += hexnums[Math.floor(Math.random() * 16)];
-      }
-      
-      document.querySelector('mini-resume').shadowRoot.querySelector('.overallcard').style.backgroundColor = color;
-    
-    });
-    */
-
 
     document.querySelector('.changebg').addEventListener('click', (e) => {
       const colors = ["blue", "green", "pink", "black"]
       const randomColors = colors[Math.floor(Math.random() * colors.length)];
       document.querySelector('mini-resume').newColor = randomColors;
-    })
+    });
 
 
     
