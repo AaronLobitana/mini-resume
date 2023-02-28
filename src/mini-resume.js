@@ -10,21 +10,6 @@ export class MiniResume extends LitElement {
         type: String,
         reflect: true,
       },
-      major: {
-        type: String,
-      },
-      education: {
-        type: String,
-      },
-      skills: {
-        type: String,
-      },
-      workexp: {
-        type: String,
-      },
-      rlvntcourses: {
-        type: String,
-      },
       extrainfolabel: {
         type: String,
       },
@@ -87,11 +72,9 @@ export class MiniResume extends LitElement {
       border: 2px solid black;
       display: inline-block;
       background-color: black;
+      margin: 12px;
     }
 
-    
-
-  
     
     .heading{
       text-align: center;
@@ -166,11 +149,6 @@ export class MiniResume extends LitElement {
   constructor() {
     super();
     this.name = "Aaron Lobitana";
-    //this.major = "B.S. Cybersecurity"; do I need this for 
-    //this.education = "Pennsylvania State University";
-    //this.skillslabel = "Skills";
-    //this.workexplabel = "Work Experience";
-    //this.rlvntcourseslabel = "Relevant Coursework"; 
     this.extrainfolabel = "Extra Information";
     this.shadowEnable = false;
     this.newColor = null;
