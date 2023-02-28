@@ -1,8 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import "@lrnwebcomponents/meme-maker/meme-maker.js";
 
-const user = new URL('../assets/placeholderimg.jpg', import.meta.url).href;
-
 export class MiniResume extends LitElement {
  
   static get properties() 
@@ -39,9 +37,6 @@ export class MiniResume extends LitElement {
         type: String,
         reflect: true,
         attribute: 'new-color'
-      },
-      meme: {
-        type: String,
       },
       memeTop: {
         type: String,
@@ -179,11 +174,10 @@ export class MiniResume extends LitElement {
     this.extrainfolabel = "Extra Information";
     this.shadowEnable = false;
     this.newColor = null;
-    this.meme = null; // how do make this a property if my img is downloaded?
     this.memeTop = "me: doesn't have a professional headshot";
     this.memeBottom = "also me:"
     this.opened = false;
-    this.imageURL = 'https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg';
+    this.imageURL = 'https://i.imgur.com/g4oneXM.jpeg';
     
   }
 
@@ -217,7 +211,7 @@ export class MiniResume extends LitElement {
 
           
             <meme-maker 
-              image-url=${user} 
+              image-url="${this.imageURL}" 
               top-text="${this.memeTop}" 
               bottom-text="${this.memeBottom}">
             </meme-maker>
