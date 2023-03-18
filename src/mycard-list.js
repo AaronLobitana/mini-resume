@@ -24,36 +24,38 @@ export class MyCardList extends LitElement{
                     "imageURL": "https://i.imgur.com/g4oneXM.jpeg",
                     "name": "Aaron Lobitana",
                     "extrainfolabel": "Extra Information",
-                    "shadowEnable": "false",
-                    "newColor": "null",
+                    "shadow-enable": false,
+                    "new-color": null,
                     "memeTop": "me: doesn't have a professional headshot",
                     "memeBottom": "also me:",
-                    "opened": "false"
+                    "opened": false
             
                 },
                 {
                     "imageURL": "https://i.imgur.com/g4oneXM.jpeg",
                     "name": "Aaron Lobitana",
                     "extrainfolabel": "Extra Information",
-                    "shadowEnable": "false",
-                    "newColor": "null",
+                    "shadow-enable": false,
+                    "new-color": null,
                     "memeTop": "me: doesn't have a professional headshot",
                     "memeBottom": "also me:",
-                    "opened": "false"
+                    "opened": false
             
                 },
                 {
                     "imageURL": "https://i.imgur.com/g4oneXM.jpeg",
                     "name": "Aaron Lobitana",
                     "extrainfolabel": "Extra Information",
-                    "shadowEnable": "false",
-                    "newColor": "null",
+                    "shadow-enable": false,
+                    "new-color": null,
                     "memeTop": "me: doesn't have a professional headshot",
                     "memeBottom": "also me:",
-                    "opened": "false"
+                    "opened": false
             
                 }
             ]
+            
+            
             
             
         ];
@@ -86,7 +88,7 @@ export class MyCardList extends LitElement{
 
             ${this.cards.map(card => html`
             <div class="item">
-                <mini-resume imageURL="${card.imageURL}" name="${card.name}" extrainfolabel="${card.extrainfolabel}" ?shadowEnable="${card.shadowEnable}" newColor="${card.newColor}" memeTop="${card.memeTop}" memeBottom="${card.memeBottom}" ?opened="${card.opened}"></mini-resume>
+                <mini-resume imageURL="${card.imageURL}" name="${card.name}" extrainfolabel="${card.extrainfolabel}" ?shadow-enable="${card.shadowEnable}" new-color="${card.newColor}" memeTop="${card.memeTop}" memeBottom="${card.memeBottom}" ?opened="${card.opened}"></mini-resume>
             </div>
             `)}
 
