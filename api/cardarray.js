@@ -35,8 +35,6 @@ export default async function handler(request, res) {
 
     }
   ];
-
-  
   res.setHeader('Cache-Control', 'max-age=0, s-maxage=1800');
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "*");

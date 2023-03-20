@@ -26,14 +26,14 @@ export class MyCardList extends LitElement{
     updateRoster() {
         const address = new URL('../api/cardarray', import.meta.url).href;
         fetch(address).then((response) => {
-            if (response.ok){
-                return response.json();
+            if (response.ok) {
+                return response.json()
             }
             return [];
         })
         .then((data) => {
             this.cards = data;
-        });    
+        });
     }
 
 
