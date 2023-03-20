@@ -35,7 +35,8 @@ export default async function handler(request, res) {
         "memeBottom": "also me:",
         "opened": false
 
-    }];
+    }
+  ];
 
   res.setHeader('Cache-Control', 'max-age=0, s-maxage=1800');
   res.setHeader("Access-Control-Allow-Credentials", "true");

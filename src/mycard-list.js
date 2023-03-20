@@ -24,7 +24,7 @@ export class MyCardList extends LitElement{
     }
 
     updateRoster() {
-        const address = new URL('../api/cardarray', import.meta.url).href;
+        const address = '../api/cardarray';
         fetch(address).then((response) => {
             if (response.ok) {
                 return response.json()
