@@ -35,6 +35,28 @@ export default async function handler(request, res) {
         "memeBottom": "also me:",
         "opened": false
 
+    },
+    {
+        "imageURL": "https://i.imgur.com/g4oneXM.jpeg",
+        "name": "Aaron Lobitana",
+        "extrainfolabel": "Extra Information",
+        "shadow-enable": false,
+        "new-color": null,
+        "memeTop": "me: doesn't have a professional headshot",
+        "memeBottom": "also me:",
+        "opened": false
+
+    },
+    {
+        "imageURL": "https://i.imgur.com/g4oneXM.jpeg",
+        "name": "Aaron Lobitana",
+        "extrainfolabel": "Extra Information",
+        "shadow-enable": false,
+        "new-color": null,
+        "memeTop": "me: doesn't have a professional headshot",
+        "memeBottom": "also me:",
+        "opened": false
+
     }
   ];
 
