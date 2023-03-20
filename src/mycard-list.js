@@ -18,48 +18,24 @@ export class MyCardList extends LitElement{
 
     constructor() {
         super();
-        this.cards = [
-            [
-                {
-                    "imageURL": "https://i.imgur.com/g4oneXM.jpeg",
-                    "name": "Aaron Lobitana",
-                    "extrainfolabel": "Extra Information",
-                    "shadow-enable": false,
-                    "new-color": null,
-                    "memeTop": "me: doesn't have a professional headshot",
-                    "memeBottom": "also me:",
-                    "opened": false
-            
-                },
-                {
-                    "imageURL": "https://i.imgur.com/g4oneXM.jpeg",
-                    "name": "Aaron Lobitana",
-                    "extrainfolabel": "Extra Information",
-                    "shadow-enable": false,
-                    "new-color": null,
-                    "memeTop": "me: doesn't have a professional headshot",
-                    "memeBottom": "also me:",
-                    "opened": false
-            
-                },
-                {
-                    "imageURL": "https://i.imgur.com/g4oneXM.jpeg",
-                    "name": "Aaron Lobitana",
-                    "extrainfolabel": "Extra Information",
-                    "shadow-enable": false,
-                    "new-color": null,
-                    "memeTop": "me: doesn't have a professional headshot",
-                    "memeBottom": "also me:",
-                    "opened": false
-            
-                }
-            ]
-            
-            
-            
-            
-        ];
+        this.cards = [];
         this.name = 'Aaron Lobitana';
+        this.updateRoster();
+    }
+
+    updateRoster() {
+        const address = new URL('../api/cardarray', import.meta.url).href;
+        const data = fetch(address).then((response) => {
+            if (response.ok){
+                return response.json();
+            }
+            return [];
+        })
+        .then((data) => {
+            this.cards = data;
+        })
+
+    
     }
 
 
